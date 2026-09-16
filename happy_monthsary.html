@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Happy 10th Monthsary, Haris Zainudin ♡</title>
+    <!-- Tailwind CSS for styling utility classes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Editorial Serif (Cormorant Garamond) + Clean Modern Sans (Manrope) + Accent Cursive (Caveat) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome for minimal subtle icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        paperIvory: '#fbf9f5',
+                        paperCream: '#f4efe6',
+                        warmRose: '#d88c9a',
+                        dustyRose: '#c27d8c',
+                        deepRose: '#9e5b6b',
+                        textDark: '#332d2b',
+                        mutedText: '#6b615e',
+                        subtlePink: '#f7ede8'
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Manrope"', 'sans-serif'],
+                        hand: ['"Caveat"', 'cursive']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #f7ede8;
+            background-image: 
+                radial-gradient(#e8d5ce 0.8px, transparent 0.8px), 
+                radial-gradient(#f2e4df 0.8px, #f7ede8 0.8px);
+            background-size: 32px 32px;
+            background-position: 0 0, 16px 16px;
+            color: #332d2b;
+            overflow-x: hidden;
+            touch-action: manipulation;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .font-serif { font-family: 'Cormorant Garamond', serif; }
+        .font-hand { font-family: 'Caveat', cursive; }
+
+        .paper-texture {
+            background-color: #fbf9f5;
+            background-image: radial-gradient(rgba(180, 160, 150, 0.08) 0.5px, transparent 0.5px);
+            background-size: 16px 16px;
+        }
+
+        @keyframes floatGentle {
+            0% { transform: translateY(100vh) scale(0.6) rotate(0deg); opacity: 0; }
+            20% { opacity: 0.5; }
+            80% { opacity: 0.5; }
+            100% { transform: translateY(-10vh) scale(1.1) rotate(360deg); opacity: 0; }
+        }
+
+        .floating-particle {
+            position: fixed;
+            color: #d88c9a;
+            pointer-events: none;
+            z-index: 0;
+            animation: floatGentle 10s linear infinite;
+        }
+
+        /* Envelope Design */
+        .stationery-envelope {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            background: #f4efe6;
+            border-radius: 4px;
+            box-shadow: 0 12px 32px rgba(100, 70, 60, 0.12), 0 2px 6px rgba(100, 70, 60, 0.06);
+            cursor: pointer;
+            transition: transform 0.4s ease;
+        }
+        .stationery-envelope:hover { transform: translateY(-4px); }
+
+        .envelope-pocket {
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, #f4efe6 0%, #ebe3d5 100%);
+            border-radius: 0 0 4px 4px;
+            z-index: 3;
+            clip-path: polygon(0 35%, 50% 65%, 100% 35%, 100% 100%, 0 100%);
+        }
+
+        .envelope-flap {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: #ece3d2;
+            border-radius: 4px 4px 0 0;
+            transform-origin: top;
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 4;
+            clip-path: polygon(0 0, 100% 0, 50% 60%);
+            transform-style: preserve-3d;
+        }
+        .envelope-flap.open {
+            transform: rotateX(180deg);
+            z-index: 1;
+        }
+
+        .envelope-wax-seal {
+            position: absolute;
+            top: 36%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 44px; height: 44px;
+            background: radial-gradient(circle at 35% 35%, #b86b7c 0%, #9e5b6b 65%, #7a4351 100%);
+            border-radius: 50%;
+            z-index: 6;
+            box-shadow: 0 4px 10px rgba(80, 40, 50, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.3), inset 0 -2px 4px rgba(0, 0, 0, 0.3);
+            display: flex; align-items: center; justify-content: center;
+            color: #fbf9f5; font-size: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            transition: opacity 0.3s ease;
+        }
+
+        .stationery-letter-sheet {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%) translateY(0);
+            width: 260px;
+            height: 175px; 
+            background: #fbf9f5;
+            box-shadow: 0 4px 20px rgba(50, 30, 25, 0.1);
+            z-index: 2;
+            transition: transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+            padding: 24px;
+            border-radius: 2px;
+        }
+        .stationery-letter-sheet.slide-out {
+            transform: translateX(-50%) translateY(-120px);
+            z-index: 5;
+        }
+
+        @keyframes shakeSoft {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-4px); }
+            40%, 80% { transform: translateX(4px); }
+        }
+        .shake-soft { animation: shakeSoft 0.4s ease-in-out; }
+
+        /* ==========================================
+           REALISTIC 3D PHYSICAL BOOK SCRAPBOOK 
+           ========================================== */
+        .scrapbook-viewport {
+            perspective: 2500px;
+            width: 100%;
+            max-width: 960px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 4px;
+            position: relative;
+        }
+
+        .physical-magazine-book {
+            position: relative;
+            width: 92vw;
+            max-width: 650px;
+            aspect-ratio: 7 / 8; /* DIUBAH: Proporsi lebih kotak/lebar, tidak terlalu panjang */
+            max-height: 65vh;    /* Menghindari kepanjangan di layar kecil */
+            display: flex;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .book-sheet {
+            position: absolute;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+            z-index: 10;
+            cursor: pointer;
+            left: 50%;
+            transform-origin: left center;
+        }
+
+        .book-page-face {
+            position: absolute;
+            inset: 0;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            overflow: hidden;
+            padding: 8px; /* Padding lebih kecil sedikit agar pas */
+            display: flex;
+            flex-direction: column;
+            box-shadow: inset 0 0 15px rgba(100,70,60,0.05), 0 0 5px rgba(0,0,0,0.05);
+        }
+
+        .book-page-face.front {
+            background-color: #fbf9f5;
+            z-index: 2;
+        }
+
+        .book-page-face.back {
+            background-color: #f4efe6;
+            transform: rotateY(180deg);
+            z-index: 1;
+        }
+
+        .book-sheet.flipped {
+            transform: rotateY(-180deg);
+        }
+
+        /* Polaroid styling responsif */
+        .editorial-polaroid {
+            background: #ffffff;
+            padding: 4px 4px 14px 4px; /* Padding bawah lebih tipis agar muat banyak */
+            box-shadow: 0 4px 12px rgba(50, 30, 20, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(220, 205, 195, 0.5);
+            width: 85%;
+            max-width: 120px; /* Maksimal lebar dikurangi agar pas vertikal */
+        }
+        .editorial-polaroid:hover {
+            transform: translateY(-2px) scale(1.04) !important;
+            box-shadow: 0 8px 18px rgba(50, 30, 20, 0.12);
+            z-index: 15;
+        }
+
+        .washi-tape-accent {
+            position: absolute;
+            width: 30px; height: 12px;
+            background: rgba(216, 140, 154, 0.35);
+            border: 1px dashed rgba(158, 91, 107, 0.3);
+            transform: rotate(-2deg);
+            z-index: 5;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-subtlePink selection:text-deepRose">
+
+    <div id="floating-container"></div>
+
+    <script>
+        const loveData = {
+            correctPin: "221125",
+            relationshipStart: "2025-06-16",
+            openingLetterText: "Hi, my hubby, Haris ♡\n\nSebelum kamu masuk lebih jauh, aku punya sedikit sesuatu buat kamu. Mungkin kecil, tapi aku bikin ini dengan banyak sayang. Jadi... jangan lupa senyum ya ♡",
+            loveLetter: `Dear my hubby Haris,\n\nI can't believe it has already been 10 months since we started this beautiful journey together. Every single day with you feels like a sweet dream I never want to wake up from.\n\nThank you for your endless patience, your warm hugs, our silly late-night talks, and for always knowing how to make me smile even on my cloudiest days. You are my home, my comfort, and my greatest adventure all at once.\n\nHere's to 10 months of endless laughter, sweet memories, and growing deeper in love. I love you more than words can ever say.\n\nHappy 10th Monthsary, my hubby. ♡`,
+            photos: [
+                { image: "https://placehold.co/600x600/f4efe6/9e5b6b?text=Haris+&+Me+%E2%99%A1", caption: "Our first silly moment ♡" },
+                { image: "https://placehold.co/600x600/ebe3d5/9e5b6b?text=Gaming+Night+%E2%99%A1", caption: "Late night gaming ♡" },
+                { image: "https://placehold.co/600x600/f7ede8/9e5b6b?text=Sweet+Call+%E2%99%A1", caption: "Video calls ♡" },
+                { image: "https://placehold.co/600x600/e8d5ce/332d2b?text=Random+Adventures+%E2%99%A1", caption: "Random walks ♡" },
+                { image: "https://placehold.co/600x600/fbf9f5/9e5b6b?text=Cozy+Hugs+%E2%99%A1", caption: "Safe place ♡" },
+                { image: "https://placehold.co/600x600/f4efe6/9e5b6b?text=10th+Monthsary+%E2%99%A1", caption: "Forever to go ♡" }
+            ],
+            bouquetMessages: [
+                "For you, my hubby ♡",
+                "A little flowers for my favorite person.",
+                "Because you deserve pretty things too.",
+                "One bouquet for the person I love the most."
+            ]
+        };
+    </script>
+
+    <section id="section-opening" class="fixed inset-0 z-50 flex items-center justify-center bg-paperIvory/95 backdrop-blur-sm transition-all duration-700 p-3 overflow-hidden">
+        
+        <!-- STEP 1: Amplop -->
+        <div id="opening-step-envelope" class="flex flex-col items-center text-center transition-all duration-500">
+            <p class="font-serif italic text-base sm:text-lg text-deepRose mb-5 tracking-wide">
+                buka amplop ini ya, hubby ♡
+            </p>
+            
+            <div class="stationery-envelope my-2" onclick="startEnvelopeAnimation()">
+                <div id="envelope-letter" class="stationery-letter-sheet flex flex-col justify-center items-center text-center paper-texture">
+                    <span class="font-serif italic text-deepRose text-sm sm:text-base font-semibold">for my hubby, Haris</span>
+                    <div class="w-8 h-[1px] bg-warmRose/40 my-2"></div>
+                    <span class="text-[10px] font-sans text-mutedText/70 tracking-widest uppercase">buka suratnya</span>
+                </div>
+                
+                <div class="envelope-pocket">
+                    <div class="absolute top-3 left-1/2 transform -translate-x-1/2 text-deepRose/30 text-xs">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                </div>
+                
+                <div id="envelope-flap" class="envelope-flap">
+                    <div id="envelope-seal" class="envelope-wax-seal"><i class="fa-solid fa-heart"></i></div>
+                </div>
+            </div>
+            <p class="text-[11px] font-sans text-mutedText/60 mt-6 tracking-wider uppercase">sentuh amplop di atas</p>
+        </div>
+
+        <!-- STEP 2: Surat Tertulis -->
+        <div id="opening-step-letter" class="hidden max-w-md w-full paper-texture p-6 sm:p-8 shadow-2xl relative transition-all duration-500 my-4 border border-[#e8d5ce]/40">
+            <div class="text-center mb-4">
+                <span class="text-[10px] uppercase tracking-widest text-warmRose font-semibold">secarik surat untukmu</span>
+                <h3 class="font-serif text-xl sm:text-2xl font-normal text-deepRose mt-1">for my hubby, Haris</h3>
+                <div class="w-10 h-[1px] bg-warmRose/30 mx-auto mt-2"></div>
+            </div>
+            
+            <div class="mb-6 text-left">
+                <p id="opening-letter-content" class="font-sans text-textDark/90 whitespace-pre-line leading-relaxed text-xs sm:text-sm font-light"></p>
+            </div>
+            
+            <button onclick="goToPhonePin()" class="w-full py-3 px-5 bg-deepRose hover:bg-dustyRose text-white font-sans text-xs tracking-widest uppercase rounded-sm transition duration-300 shadow-sm">
+                lanjut <i class="fa-solid fa-arrow-right ml-1"></i>
+            </button>
+        </div>
+
+        <!-- STEP 3: PIN -->
+        <div id="opening-step-phone" class="hidden flex flex-col items-center">
+            <div class="max-w-[280px] w-full bg-paperIvory border border-[#e8d5ce]/60 rounded-3xl shadow-2xl p-6 relative" id="editorial-phone-card">
+                <div class="text-center mb-5">
+                    <span class="text-[10px] tracking-widest uppercase text-warmRose font-semibold">Secure Access</span>
+                    <h3 class="font-serif text-lg font-normal text-deepRose mt-1">Masukkan PIN Kita</h3>
+                    <p id="pin-hint" class="text-[11px] text-mutedText mt-1">Tanggal jadian kita (DDMMYY)</p>
+                </div>
+                
+                <div id="pin-dots-container" class="flex justify-center space-x-3 mb-6">
+                    <div class="w-2.5 h-2.5 rounded-full border border-deepRose/40 bg-transparent transition-all duration-200 pin-dot"></div>
+                    <div class="w-2.5 h-2.5 rounded-full border border-deepRose/40 bg-transparent transition-all duration-200 pin-dot"></div>
+                    <div class="w-2.5 h-2.5 rounded-full border border-deepRose/40 bg-transparent transition-all duration-200 pin-dot"></div>
+                    <div class="w-2.5 h-2.5 rounded-full border border-deepRose/40 bg-transparent transition-all duration-200 pin-dot"></div>
+                    <div class="w-2.5 h-2.5 rounded-full border border-deepRose/40 bg-transparent transition-all duration-200 pin-dot"></div>
+                    <div class="w-2.5 h-2.5 rounded-full border border-deepRose/40 bg-transparent transition-all duration-200 pin-dot"></div>
+                </div>
+                
+                <div class="grid grid-cols-3 gap-3 max-w-[200px] mx-auto">
+                    <button onclick="pressKey('1')" class="w-11 h-11 rounded-full bg-white text-deepRose font-serif text-base shadow-sm border border-[#e8d5ce]/60 active:scale-95 mx-auto">1</button>
+                    <button onclick="pressKey('2')" class="w-11 h-11 rounded-full bg-white text-deepRose font-serif text-base shadow-sm border border-[#e8d5ce]/60 active:scale-95 mx-auto">2</button>
+                    <button onclick="pressKey('3')" class="w-11 h-11 rounded-full bg-white text-deepRose font-serif text-base shadow-sm border border-[#e8d5ce]/60 active:scale-95 mx-auto">3</button>
+                    <button onclick="pressKey('4')" class="w-11 h-11 rounded-full bg-white text-deepRose font-serif text-base shadow-sm border border-[#e8d5ce]/60 active:scale-95 mx-auto">4</button>
+                    <button onclick="pressKey('5')" class="w-11 h-11 rounded-full bg-white text-deepRose font-serif text-base shadow-sm border border-[#e8d5ce]/60 active:scale-95 mx-auto">5</button>
+                    <button onclick="pressKey('6')" class="w-11 h-11 rounded-full bg-white text-deepRose font-serif text-base shadow-sm border border-[#e8d5ce]/60 active:scale-95 mx-auto">6</button>
+                    <button onclick="pressKey('7')" class="w-11 h-11 rounded-full bg-white text-deepRose font-serif text-base shadow-sm border border-[#e8d5ce]/60 active:scale-95 mx-auto">7</button>
+                    <button onclick="pressKey('8')" class="w-11 h-11 rounded-full bg-white text-deepRose font-serif text-base shadow-sm border border-[#e8d5ce]/60 active:scale-95 mx-auto">8</button>
+                    <button onclick="pressKey('9')" class="w-11 h-11 rounded-full bg-white text-deepRose font-serif text-base shadow-sm border border-[#e8d5ce]/60 active:scale-95 mx-auto">9</button>
+                    <button onclick="backToLetterFromPhone()" class="w-11 h-11 rounded-full bg-paperCream text-deepRose text-xs shadow-sm border border-[#e8d5ce]/60 active:scale-95 mx-auto"><i class="fa-solid fa-arrow-left"></i></button>
+                    <button onclick="pressKey('0')" class="w-11 h-11 rounded-full bg-white text-deepRose font-serif text-base shadow-sm border border-[#e8d5ce]/60 active:scale-95 mx-auto">0</button>
+                    <button onclick="deleteKey()" class="w-11 h-11 rounded-full bg-paperCream text-deepRose text-xs shadow-sm border border-[#e8d5ce]/60 active:scale-95 mx-auto"><i class="fa-solid fa-delete-left"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 4: Kuis (Little Question) -->
+        <div id="opening-step-quiz" class="hidden max-w-sm w-full paper-texture p-6 sm:p-8 shadow-2xl relative transition-all duration-500 border border-[#e8d5ce]/40 text-center rounded-sm">
+            <div class="mb-6 mt-2">
+                <p class="font-hand text-3xl sm:text-4xl text-deepRose mb-2 font-semibold">
+                    kamu sayang ga sama aku?
+                </p>
+            </div>
+            
+            <div id="quiz-options-container" class="space-y-4 mb-2 mt-6">
+                <button onclick="handleQuizChoice()" class="w-full py-3.5 px-6 bg-paperIvory hover:bg-subtlePink text-deepRose font-sans font-semibold rounded-full shadow-sm border border-deepRose/40 transition transform active:scale-95 text-sm">
+                    Sayang baby
+                </button>
+                <button onclick="handleQuizChoice()" class="w-full py-3.5 px-6 bg-deepRose hover:bg-dustyRose text-white font-sans font-semibold rounded-full shadow transition transform active:scale-95 text-sm">
+                    Sayang wifey
+                </button>
+            </div>
+        </div>
+
+        <!-- STEP 5: 3D Physical Book Scrapbook (3 Lembar) -->
+        <div id="opening-step-scrapbook" class="hidden scrapbook-viewport h-full w-full">
+            
+            <div class="physical-magazine-book" id="physical-book-container" style="transform: translateX(-25%);">
+                
+                <!-- LEMBAR 1 (Sheet 1) -->
+                <div id="page-sheet-1" class="book-sheet" style="z-index: 3;" onclick="turnPage(1)">
+                    <!-- Front (Cover Depan) -->
+                    <div class="book-page-face front text-center justify-between pb-4 border-r border-[#e8d5ce]/50">
+                        <div class="mt-2">
+                            <div class="w-8 h-8 mx-auto rounded-full bg-subtlePink flex items-center justify-center text-deepRose text-sm mb-1 border border-[#e8d5ce]/60">
+                                <i class="fa-solid fa-heart"></i>
+                            </div>
+                            <h2 class="font-serif text-xl sm:text-2xl font-normal text-deepRose mb-1">our diary</h2>
+                            <p class="font-hand text-sm sm:text-lg text-deepRose">10 months of little moments.</p>
+                        </div>
+                        <div class="paper-texture p-2 rounded-sm border border-[#e8d5ce]/60 mx-2 relative shadow-sm">
+                            <div class="washi-tape-accent -top-2 left-6"></div>
+                            <p class="font-serif text-[10px] text-textDark/90 italic">
+                                "A quiet collection of our photographs, inside jokes, and cherished memories."
+                            </p>
+                            <p class="font-hand text-sm text-deepRose mt-1 font-semibold">Haris Zainudin ♡</p>
+                        </div>
+                        <span class="text-[8px] font-sans text-deepRose/60 uppercase tracking-widest">Tap to open →</span>
+                    </div>
+                    
+                    <!-- Back (Chapter 1 - Kiri) -->
+                    <div class="book-page-face back border-l border-[#e8d5ce]/50">
+                        <div class="text-center mb-1 mt-1">
+                            <h3 class="font-serif text-xs font-semibold text-deepRose border-b border-[#e8d5ce]/40 pb-1 mx-2">Chapter 01</h3>
+                        </div>
+                        <div class="flex flex-col items-center justify-center gap-2 flex-grow my-1">
+                            <div class="editorial-polaroid rotate-2" onclick="openMemoryModal(0, event)">
+                                <div class="washi-tape-accent -top-1 left-1/2 -translate-x-1/2 scale-75"></div>
+                                <img src="https://placehold.co/600x600/f4efe6/9e5b6b?text=Memory+%E2%99%A1" alt="Pic1" class="w-full aspect-square object-cover bg-paperIvory border border-[#e8d5ce]/40 mb-1">
+                                <p class="text-[8px] font-serif italic text-center">First moment ♡</p>
+                            </div>
+                            <div class="editorial-polaroid -rotate-2" onclick="openMemoryModal(1, event)">
+                                <div class="washi-tape-accent -top-1 left-1/2 -translate-x-1/2 scale-75"></div>
+                                <img src="https://placehold.co/600x600/ebe3d5/9e5b6b?text=Memory+%E2%99%A1" alt="Pic2" class="w-full aspect-square object-cover bg-paperIvory border border-[#e8d5ce]/40 mb-1">
+                                <p class="text-[8px] font-serif italic text-center">Silly chats ♡</p>
+                            </div>
+                        </div>
+                        <div class="text-center text-[8px] text-mutedText/50">Page 1</div>
+                    </div>
+                </div>
+
+                <!-- LEMBAR 2 (Sheet 2) -->
+                <div id="page-sheet-2" class="book-sheet" style="z-index: 2;" onclick="turnPage(2)">
+                    <!-- Front (Chapter 2 - Kanan) -->
+                    <div class="book-page-face front border-r border-[#e8d5ce]/50">
+                        <div class="text-center mb-1 mt-1">
+                            <h3 class="font-serif text-xs font-semibold text-deepRose border-b border-[#e8d5ce]/40 pb-1 mx-2">Chapter 02</h3>
+                        </div>
+                        <div class="flex flex-col items-center justify-center gap-2 flex-grow my-1">
+                            <div class="editorial-polaroid -rotate-2" onclick="openMemoryModal(2, event)">
+                                <div class="washi-tape-accent -top-1 left-1/2 -translate-x-1/2 scale-75"></div>
+                                <img src="https://placehold.co/600x600/f7ede8/9e5b6b?text=Memory+%E2%99%A1" alt="Pic3" class="w-full aspect-square object-cover bg-paperIvory border border-[#e8d5ce]/40 mb-1">
+                                <p class="text-[8px] font-serif italic text-center">Video calls ♡</p>
+                            </div>
+                            <div class="editorial-polaroid rotate-3" onclick="openMemoryModal(3, event)">
+                                <div class="washi-tape-accent -top-1 left-1/2 -translate-x-1/2 scale-75"></div>
+                                <img src="https://placehold.co/600x600/e8d5ce/332d2b?text=Memory+%E2%99%A1" alt="Pic4" class="w-full aspect-square object-cover bg-paperIvory border border-[#e8d5ce]/40 mb-1">
+                                <p class="text-[8px] font-serif italic text-center">Random walks ♡</p>
+                            </div>
+                        </div>
+                        <div class="text-center text-[8px] text-mutedText/50">Page 2</div>
+                    </div>
+                    
+                    <!-- Back (Chapter 3 - Kiri) -->
+                    <div class="book-page-face back border-l border-[#e8d5ce]/50">
+                        <div class="text-center mb-1 mt-1">
+                            <h3 class="font-serif text-xs font-semibold text-deepRose border-b border-[#e8d5ce]/40 pb-1 mx-2">Chapter 03</h3>
+                        </div>
+                        <div class="flex flex-col items-center justify-center gap-2 flex-grow my-1">
+                            <div class="editorial-polaroid rotate-1 mt-2" onclick="openMemoryModal(4, event)">
+                                <div class="washi-tape-accent -top-1 left-1/2 -translate-x-1/2 scale-75"></div>
+                                <img src="https://placehold.co/600x600/fbf9f5/9e5b6b?text=Memory+%E2%99%A1" alt="Pic5" class="w-full aspect-square object-cover bg-paperIvory border border-[#e8d5ce]/40 mb-1">
+                                <p class="text-[8px] font-serif italic text-center">Cozy hugs ♡</p>
+                            </div>
+                        </div>
+                        <div class="text-center text-[8px] text-mutedText/50">Page 3</div>
+                    </div>
+                </div>
+
+                <!-- LEMBAR 3 (Sheet 3) -->
+                <div id="page-sheet-3" class="book-sheet" style="z-index: 1;" onclick="turnPage(3)">
+                    <!-- Front (Chapter 3 cont - Kanan) -->
+                    <div class="book-page-face front border-r border-[#e8d5ce]/50">
+                        <div class="text-center mb-1 mt-1">
+                            <h3 class="font-serif text-xs font-semibold text-deepRose border-b border-[#e8d5ce]/40 pb-1 mx-2">Cont...</h3>
+                        </div>
+                        <div class="flex flex-col items-center justify-center gap-2 flex-grow my-1">
+                            <div class="editorial-polaroid -rotate-1 mt-2" onclick="openMemoryModal(5, event)">
+                                <div class="washi-tape-accent -top-1 left-1/2 -translate-x-1/2 scale-75"></div>
+                                <img src="https://placehold.co/600x600/f4efe6/9e5b6b?text=Memory+%E2%99%A1" alt="Pic6" class="w-full aspect-square object-cover bg-paperIvory border border-[#e8d5ce]/40 mb-1">
+                                <p class="text-[8px] font-serif italic text-center">10 Monthsary ♡</p>
+                            </div>
+                        </div>
+                        <span class="text-[8px] font-sans text-deepRose/60 uppercase tracking-widest text-center mt-auto">Tap to close →</span>
+                    </div>
+                    
+                    <!-- Back (Cover Belakang - Kiri saat ditutup) -->
+                    <div class="book-page-face back border-l border-[#e8d5ce]/50">
+                        <div class="flex flex-col h-full items-center justify-center text-center p-4">
+                            <div class="text-deepRose text-2xl sm:text-3xl mb-3 opacity-70"><i class="fa-solid fa-heart"></i></div>
+                            <p class="font-hand text-xl sm:text-2xl text-deepRose leading-relaxed">
+                                "thankyou udah jadi yang terbaik gitu ♡"
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Tombol Lanjutkan dipindah ke BAWAH TENGAH agar tidak overlap cover -->
+            <div id="scrapbook-continue-btn" class="absolute bottom-[5%] left-1/2 transform -translate-x-1/2 opacity-0 pointer-events-none transition-all duration-700 z-50">
+                <button onclick="finishScrapbookAndOpenWebsite()" class="py-2.5 px-6 bg-deepRose hover:bg-dustyRose text-white font-sans text-xs tracking-widest uppercase rounded-sm shadow-lg transition transform hover:scale-105 flex items-center gap-2 whitespace-nowrap">
+                    Lanjutkan <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- KONTEN UTAMA APLIKASI TETAP SAMA -->
+    <div id="main-app" class="hidden flex-col min-h-screen justify-between max-w-2xl mx-auto w-full p-4 sm:p-6 relative z-10">
+        <header class="text-center py-6">
+            <h1 class="font-serif text-2xl sm:text-4xl font-normal text-deepRose mb-1">Happy 10th Monthsary, Haris Zainudin ♡</h1>
+            <p class="text-xs sm:text-sm text-mutedText font-serif italic">Ten months of quiet happiness with you.</p>
+        </header>
+
+        <main class="my-auto space-y-4 py-2">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                
+                <div onclick="showSection('letter')" class="paper-texture p-5 rounded-sm cursor-pointer hover:border-deepRose transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md relative border border-[#e8d5ce]/60 group">
+                    <div class="absolute -top-3 right-4 bg-subtlePink text-deepRose px-2.5 py-0.5 rounded-full text-[10px] font-semibold tracking-wider border border-[#e8d5ce]/60">Letter</div>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-sm bg-subtlePink flex items-center justify-center text-deepRose text-lg group-hover:scale-105 transition duration-300 border border-[#e8d5ce]/40"><i class="fa-solid fa-envelope"></i></div>
+                        <div><h3 class="font-serif font-semibold text-lg text-deepRose">Love Letter</h3><p class="text-xs text-mutedText">A heartfelt note written just for Haris</p></div>
+                    </div>
+                </div>
+
+                <div onclick="showSection('memories')" class="paper-texture p-5 rounded-sm cursor-pointer hover:border-deepRose transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md relative border border-[#e8d5ce]/60 group">
+                    <div class="absolute -top-3 right-4 bg-subtlePink text-deepRose px-2.5 py-0.5 rounded-full text-[10px] font-semibold tracking-wider border border-[#e8d5ce]/60">Album</div>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-sm bg-subtlePink flex items-center justify-center text-deepRose text-lg group-hover:scale-105 transition duration-300 border border-[#e8d5ce]/40"><i class="fa-solid fa-camera-retro"></i></div>
+                        <div><h3 class="font-serif font-semibold text-lg text-deepRose">Our Memories</h3><p class="text-xs text-mutedText">Editorial polaroid album of our moments</p></div>
+                    </div>
+                </div>
+
+                <div onclick="showSection('time')" class="paper-texture p-5 rounded-sm cursor-pointer hover:border-deepRose transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md relative border border-[#e8d5ce]/60 group">
+                    <div class="absolute -top-3 right-4 bg-subtlePink text-deepRose px-2.5 py-0.5 rounded-full text-[10px] font-semibold tracking-wider border border-[#e8d5ce]/60">Countdown</div>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-sm bg-subtlePink flex items-center justify-center text-deepRose text-lg group-hover:scale-105 transition duration-300 border border-[#e8d5ce]/40"><i class="fa-solid fa-clock"></i></div>
+                        <div><h3 class="font-serif font-semibold text-lg text-deepRose">Our Time</h3><p class="text-xs text-mutedText">Every second spent loving Haris</p></div>
+                    </div>
+                </div>
+
+                <div onclick="showSection('bouquet')" class="paper-texture p-5 rounded-sm cursor-pointer hover:border-deepRose transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md relative border border-[#e8d5ce]/60 group">
+                    <div class="absolute -top-3 right-4 bg-subtlePink text-deepRose px-2.5 py-0.5 rounded-full text-[10px] font-semibold tracking-wider border border-[#e8d5ce]/60">Gift</div>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-sm bg-subtlePink flex items-center justify-center text-deepRose text-lg group-hover:scale-105 transition duration-300 border border-[#e8d5ce]/40"><i class="fa-solid fa-spa"></i></div>
+                        <div><h3 class="font-serif font-semibold text-lg text-deepRose">A Little Bouquet</h3><p class="text-xs text-mutedText">Soft pastel blooms just for you</p></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div onclick="showSection('ending')" class="paper-texture p-4 rounded-sm text-center cursor-pointer hover:bg-subtlePink/40 transition border border-dashed border-deepRose/30">
+                <p class="font-serif italic text-deepRose text-base">"10 months down, and I still choose you, Haris..." ✨ Tap here ♡</p>
+            </div>
+        </main>
+
+        <footer class="text-center py-4 text-xs font-sans text-mutedText/70 tracking-wider">
+            Made with all my love, for Haris Zainudin ♡
+        </footer>
+    </div>
+
+    <!-- MODALS -->
+    <div id="view-letter" class="fixed inset-0 z-50 hidden bg-paperIvory/95 backdrop-blur-sm overflow-y-auto p-4 flex items-center justify-center">
+        <div class="max-w-lg w-full paper-texture p-8 shadow-2xl relative border border-[#e8d5ce]/60 my-8">
+            <button onclick="hideSections()" class="absolute top-4 right-4 w-8 h-8 bg-subtlePink hover:bg-warmRose text-deepRose rounded-full flex items-center justify-center transition border border-[#e8d5ce]/40"><i class="fa-solid fa-xmark text-sm"></i></button>
+            <div class="text-center mb-6"><span class="font-serif italic text-2xl text-deepRose">To my favorite person</span><div class="w-10 h-[1px] bg-warmRose/30 mx-auto mt-2"></div></div>
+            <div class="bg-paperIvory p-6 shadow-sm border border-[#e8d5ce]/40 relative mb-6">
+                <p id="letter-content-display" class="font-sans text-textDark/90 whitespace-pre-line leading-relaxed text-sm font-light"></p>
+            </div>
+            <div class="text-center"><button onclick="hideSections()" class="py-2.5 px-6 bg-deepRose hover:bg-dustyRose text-white font-sans text-xs tracking-widest uppercase rounded-sm shadow transition">Close</button></div>
+        </div>
+    </div>
+
+    <div id="view-memories" class="fixed inset-0 z-50 hidden bg-paperIvory/95 backdrop-blur-sm overflow-y-auto p-4 flex flex-col items-center justify-center">
+        <div class="max-w-xl w-full paper-texture p-6 rounded-sm shadow-2xl relative border border-[#e8d5ce]/60 my-8">
+            <button onclick="hideSections()" class="absolute top-4 right-4 w-8 h-8 bg-subtlePink hover:bg-warmRose text-deepRose rounded-full flex items-center justify-center transition border border-[#e8d5ce]/40"><i class="fa-solid fa-xmark text-sm"></i></button>
+            <div class="text-center mb-6"><h2 class="font-serif text-2xl text-deepRose">Our Memories</h2><div class="w-8 h-[1px] bg-warmRose/30 mx-auto mt-2"></div></div>
+            <div id="polaroid-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6"></div>
+            <div class="text-center"><button onclick="hideSections()" class="py-2.5 px-6 bg-deepRose hover:bg-dustyRose text-white font-sans text-xs tracking-widest uppercase rounded-sm shadow transition">Back to Menu</button></div>
+        </div>
+    </div>
+
+    <div id="view-time" class="fixed inset-0 z-50 hidden bg-paperIvory/95 backdrop-blur-sm overflow-y-auto p-4 flex items-center justify-center">
+        <div class="max-w-md w-full paper-texture p-6 shadow-2xl relative border border-[#e8d5ce]/60 text-center my-8">
+            <button onclick="hideSections()" class="absolute top-4 right-4 w-8 h-8 bg-subtlePink hover:bg-warmRose text-deepRose rounded-full flex items-center justify-center transition border border-[#e8d5ce]/40"><i class="fa-solid fa-xmark text-sm"></i></button>
+            <h2 class="font-serif text-2xl text-deepRose mb-6">Our Time Together</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
+                <div class="paper-texture p-3 rounded-sm border border-[#e8d5ce]/50"><div id="time-months" class="font-serif text-2xl text-deepRose">0</div><div class="text-[10px] font-sans text-mutedText uppercase mt-1">Months</div></div>
+                <div class="paper-texture p-3 rounded-sm border border-[#e8d5ce]/50"><div id="time-days" class="font-serif text-2xl text-deepRose">0</div><div class="text-[10px] font-sans text-mutedText uppercase mt-1">Days</div></div>
+                <div class="paper-texture p-3 rounded-sm border border-[#e8d5ce]/50"><div id="time-hours" class="font-serif text-2xl text-deepRose">0</div><div class="text-[10px] font-sans text-mutedText uppercase mt-1">Hours</div></div>
+                <div class="paper-texture p-3 rounded-sm border border-[#e8d5ce]/50"><div id="time-minutes" class="font-serif text-2xl text-deepRose">0</div><div class="text-[10px] font-sans text-mutedText uppercase mt-1">Minutes</div></div>
+                <div class="paper-texture p-3 rounded-sm border border-[#e8d5ce]/50 col-span-2 sm:col-span-2"><div id="time-seconds" class="font-serif text-2xl text-deepRose">0</div><div class="text-[10px] font-sans text-mutedText uppercase mt-1">Seconds</div></div>
+            </div>
+            <div class="text-center"><button onclick="hideSections()" class="py-2.5 px-6 bg-deepRose hover:bg-dustyRose text-white font-sans text-xs tracking-widest uppercase rounded-sm shadow transition">Back to Menu</button></div>
+        </div>
+    </div>
+
+    <!-- MEMORY LIGHTBOX MODAL -->
+    <div id="memory-modal" class="fixed inset-0 z-[70] hidden bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="max-w-sm w-full paper-texture p-5 pb-7 rounded-sm shadow-2xl relative border border-[#e8d5ce]/60">
+            <button onclick="closeMemoryModal()" class="absolute -top-3 -right-3 w-8 h-8 bg-deepRose text-white rounded-full flex items-center justify-center shadow-md"><i class="fa-solid fa-xmark text-sm"></i></button>
+            <div class="overflow-hidden rounded-sm mb-3 bg-paperIvory aspect-square flex items-center justify-center border border-[#e8d5ce]/40">
+                <img id="modal-img" src="" alt="Memory" class="w-full h-full object-cover">
+            </div>
+            <p id="modal-caption" class="font-serif italic text-lg text-center text-deepRose mb-2"></p>
+            <div class="flex justify-between px-2 mt-4">
+                <button onclick="prevMemory()" class="px-4 py-1.5 bg-subtlePink text-deepRose rounded-sm text-xs transition border border-[#e8d5ce]/60"><i class="fa-solid fa-chevron-left"></i> Prev</button>
+                <button onclick="nextMemory()" class="px-4 py-1.5 bg-subtlePink text-deepRose rounded-sm text-xs transition border border-[#e8d5ce]/60">Next <i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div id="view-bouquet" class="fixed inset-0 z-50 hidden bg-paperIvory/95 backdrop-blur-sm overflow-y-auto p-4 flex items-center justify-center">
+        <div class="max-w-md w-full paper-texture p-6 text-center my-8 border border-[#e8d5ce]/60">
+            <button onclick="hideSections()" class="absolute top-4 right-4 w-8 h-8 bg-subtlePink text-deepRose rounded-full"><i class="fa-solid fa-xmark"></i></button>
+            <h2 class="font-serif text-2xl text-deepRose mb-6">A Little Bouquet</h2>
+            <div class="text-6xl my-8 text-warmRose"><i class="fa-solid fa-spa"></i></div>
+            <p class="font-serif italic text-lg text-deepRose mb-6">"For you, my hubby ♡"</p>
+            <button onclick="hideSections()" class="py-2.5 px-6 bg-deepRose text-white text-xs uppercase rounded-sm">Back</button>
+        </div>
+    </div>
+
+    <div id="view-ending" class="fixed inset-0 z-50 hidden bg-paperIvory/95 backdrop-blur-sm overflow-y-auto p-4 flex items-center justify-center">
+        <div class="max-w-md w-full paper-texture p-6 text-center my-8 border border-[#e8d5ce]/60">
+            <button onclick="hideSections()" class="absolute top-4 right-4 w-8 h-8 bg-subtlePink text-deepRose rounded-full"><i class="fa-solid fa-xmark"></i></button>
+            <div class="text-3xl text-warmRose mb-3 animate-pulse">♡</div>
+            <h2 class="font-serif text-2xl text-deepRose mb-3">10 months down...</h2>
+            <div class="bg-paperIvory p-5 rounded-sm border border-[#e8d5ce]/50 mb-6">
+                <p class="font-semibold text-deepRose">"...and I still choose you, Haris. ♡"</p>
+            </div>
+            <button onclick="hideSections()" class="py-2.5 px-6 bg-deepRose text-white text-xs uppercase rounded-sm">Back</button>
+        </div>
+    </div>
+
+    <script>
+        let enteredPin = "";
+        let currentBookSheet = 0; 
+        let currentPhotoIndex = 0;
+
+        window.addEventListener('DOMContentLoaded', () => {
+            createFloatingParticles();
+            document.getElementById('opening-letter-content').innerText = loveData.openingLetterText.trim();
+            document.getElementById('letter-content-display').innerText = loveData.loveLetter.trim();
+            populateMemories();
+            startRealtimeCounter();
+        });
+
+        function createFloatingParticles() {
+            const container = document.getElementById('floating-container');
+            const icons = ['fa-heart', 'fa-spa', 'fa-star'];
+            for (let i = 0; i < 12; i++) {
+                const p = document.createElement('div');
+                p.className = 'floating-particle';
+                p.innerHTML = `<i class="fa-solid ${icons[Math.floor(Math.random() * icons.length)]}"></i>`;
+                p.style.left = Math.random() * 100 + 'vw';
+                p.style.animationDuration = (8 + Math.random() * 6) + 's';
+                p.style.animationDelay = (Math.random() * 5) + 's';
+                p.style.fontSize = (10 + Math.random() * 12) + 'px';
+                container.appendChild(p);
+            }
+        }
+
+        function startEnvelopeAnimation() {
+            document.getElementById('envelope-flap').classList.add('open');
+            if(document.getElementById('envelope-seal')) document.getElementById('envelope-seal').style.opacity = '0';
+            setTimeout(() => document.getElementById('envelope-letter').classList.add('slide-out'), 450);
+            setTimeout(() => {
+                document.getElementById('opening-step-envelope').classList.add('hidden');
+                document.getElementById('opening-step-letter').classList.remove('hidden');
+            }, 1350);
+        }
+
+        function goToPhonePin() {
+            document.getElementById('opening-step-letter').classList.add('hidden');
+            document.getElementById('opening-step-phone').classList.remove('hidden');
+        }
+
+        function backToLetterFromPhone() {
+            enteredPin = ""; updatePinDots();
+            document.getElementById('opening-step-phone').classList.add('hidden');
+            document.getElementById('opening-step-letter').classList.remove('hidden');
+        }
+
+        function pressKey(digit) {
+            if (enteredPin.length < 6) { enteredPin += digit; updatePinDots(); }
+        }
+
+        function deleteKey() {
+            if (enteredPin.length > 0) { enteredPin = enteredPin.slice(0, -1); updatePinDots(); }
+        }
+
+        function updatePinDots() {
+            const dots = document.querySelectorAll('.pin-dot');
+            dots.forEach((dot, idx) => {
+                dot.style.backgroundColor = idx < enteredPin.length ? '#9e5b6b' : 'transparent';
+                dot.style.borderColor = idx < enteredPin.length ? '#9e5b6b' : 'rgba(158, 91, 107, 0.4)';
+            });
+            if (enteredPin.length === 6) setTimeout(submitPin, 300);
+        }
+
+        function submitPin() {
+            const hint = document.getElementById('pin-hint');
+            const card = document.getElementById('editorial-phone-card');
+            if (enteredPin === loveData.correctPin) {
+                hint.innerText = "Yey, kamu benar! ♡";
+                hint.style.color = "#9e5b6b";
+                triggerBurstHearts();
+                setTimeout(() => {
+                    document.getElementById('opening-step-phone').classList.add('hidden');
+                    document.getElementById('opening-step-quiz').classList.remove('hidden');
+                }, 800);
+            } else {
+                hint.innerText = "Salah... coba lagi ♡";
+                hint.style.color = "#9e5b6b";
+                card.classList.add('shake-soft');
+                setTimeout(() => { card.classList.remove('shake-soft'); enteredPin = ""; updatePinDots(); hint.innerText="Tanggal jadian (DDMMYY)";}, 800);
+            }
+        }
+
+        function handleQuizChoice() {
+            triggerBurstHearts();
+            document.getElementById('opening-step-quiz').classList.add('hidden');
+            document.getElementById('opening-step-scrapbook').classList.remove('hidden');
+            currentBookSheet = 0;
+            updateBookSheetsState();
+        }
+
+        function turnPage(clickedSheet) {
+            if (currentBookSheet === 0 && clickedSheet === 1) currentBookSheet = 1;
+            else if (currentBookSheet === 1 && clickedSheet === 2) currentBookSheet = 2;
+            else if (currentBookSheet === 2 && clickedSheet === 3) currentBookSheet = 3;
+            else if (currentBookSheet === 3 && clickedSheet === 3) currentBookSheet = 2; 
+            else if (currentBookSheet === 2 && clickedSheet === 2) currentBookSheet = 1;
+            else if (currentBookSheet === 1 && clickedSheet === 1) currentBookSheet = 0;
+            
+            updateBookSheetsState();
+        }
+
+        function updateBookSheetsState() {
+            const sheet1 = document.getElementById('page-sheet-1');
+            const sheet2 = document.getElementById('page-sheet-2');
+            const sheet3 = document.getElementById('page-sheet-3');
+            const bookContainer = document.getElementById('physical-book-container');
+            const continueBtn = document.getElementById('scrapbook-continue-btn');
+
+            if (currentBookSheet === 0) {
+                bookContainer.style.transform = 'translateX(-25%)'; 
+                sheet1.classList.remove('flipped'); sheet1.style.zIndex = 3;
+                sheet2.classList.remove('flipped'); sheet2.style.zIndex = 2;
+                sheet3.classList.remove('flipped'); sheet3.style.zIndex = 1;
+                
+                continueBtn.style.opacity = '0';
+                continueBtn.classList.add('pointer-events-none');
+            } 
+            else if (currentBookSheet === 1) {
+                bookContainer.style.transform = 'translateX(0)';
+                sheet1.classList.add('flipped'); sheet1.style.zIndex = 3;
+                sheet2.classList.remove('flipped'); sheet2.style.zIndex = 2;
+                sheet3.classList.remove('flipped'); sheet3.style.zIndex = 1; 
+                
+                continueBtn.style.opacity = '0';
+                continueBtn.classList.add('pointer-events-none');
+            }
+            else if (currentBookSheet === 2) {
+                bookContainer.style.transform = 'translateX(0)';
+                sheet1.classList.add('flipped'); sheet1.style.zIndex = 1;
+                sheet2.classList.add('flipped'); sheet2.style.zIndex = 3;
+                sheet3.classList.remove('flipped'); sheet3.style.zIndex = 2;
+                
+                continueBtn.style.opacity = '0';
+                continueBtn.classList.add('pointer-events-none');
+            }
+            else if (currentBookSheet === 3) {
+                bookContainer.style.transform = 'translateX(25%)';
+                sheet1.classList.add('flipped'); sheet1.style.zIndex = 1;
+                sheet2.classList.add('flipped'); sheet2.style.zIndex = 2;
+                sheet3.classList.add('flipped'); sheet3.style.zIndex = 3;
+
+                // Tampilkan tombol di bawah
+                continueBtn.classList.remove('pointer-events-none');
+                setTimeout(() => continueBtn.style.opacity = '1', 300);
+            }
+        }
+
+        function finishScrapbookAndOpenWebsite() {
+            document.getElementById('section-opening').classList.add('hidden');
+            document.getElementById('main-app').classList.remove('hidden');
+            document.getElementById('main-app').classList.add('flex');
+            triggerBurstHearts();
+        }
+
+        function openMemoryModal(index, event) {
+            if(event) event.stopPropagation(); 
+            currentPhotoIndex = index;
+            document.getElementById('memory-modal').classList.remove('hidden');
+            document.getElementById('modal-img').src = loveData.photos[index].image;
+            document.getElementById('modal-caption').innerText = loveData.photos[index].caption;
+        }
+        function closeMemoryModal() { document.getElementById('memory-modal').classList.add('hidden'); }
+        function prevMemory() { openMemoryModal((currentPhotoIndex - 1 + loveData.photos.length) % loveData.photos.length); }
+        function nextMemory() { openMemoryModal((currentPhotoIndex + 1) % loveData.photos.length); }
+
+        function showSection(id) {
+            hideSections();
+            const el = document.getElementById(`view-${id}`);
+            if(el) el.classList.remove('hidden');
+        }
+        function hideSections() {
+            ['view-letter', 'view-memories', 'view-time', 'view-bouquet', 'view-ending'].forEach(id => {
+                const el = document.getElementById(id);
+                if(el) el.classList.add('hidden');
+            });
+            closeMemoryModal();
+        }
+
+        function populateMemories() {
+            const grid = document.getElementById('polaroid-grid');
+            if(!grid) return;
+            loveData.photos.forEach((photo, idx) => {
+                const div = document.createElement('div');
+                div.className = `editorial-polaroid cursor-pointer transform ${idx%2===0?'-rotate-2':'rotate-2'} hover:rotate-0 transition duration-300 w-full`;
+                div.onclick = () => openMemoryModal(idx);
+                div.innerHTML = `<div class="w-full aspect-square bg-paperIvory border border-[#e8d5ce]/40 mb-2 overflow-hidden"><img src="${photo.image}" class="w-full h-full object-cover"></div><p class="font-serif italic text-center text-xs">${photo.caption}</p>`;
+                grid.appendChild(div);
+            });
+        }
+
+        function startRealtimeCounter() {
+            const updateTimer = () => {
+                let diff = new Date() - new Date(loveData.relationshipStart + 'T00:00:00');
+                if (diff < 0) diff = 0;
+                
+                const secs = Math.floor(diff / 1000);
+                const mins = Math.floor(secs / 60);
+                const hrs = Math.floor(mins / 60);
+                const days = Math.floor(hrs / 24);
+                
+                if(document.getElementById('time-months')) document.getElementById('time-months').innerText = Math.floor(days / 30.4368);
+                if(document.getElementById('time-days')) document.getElementById('time-days').innerText = days % 30;
+                if(document.getElementById('time-hours')) document.getElementById('time-hours').innerText = hrs % 24;
+                if(document.getElementById('time-minutes')) document.getElementById('time-minutes').innerText = mins % 60;
+                if(document.getElementById('time-seconds')) document.getElementById('time-seconds').innerText = secs % 60;
+            };
+            updateTimer(); setInterval(updateTimer, 1000);
+        }
+
+        function triggerBurstHearts() {
+            for (let i = 0; i < 8; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'fixed text-warmRose text-xl z-[100] pointer-events-none';
+                heart.innerHTML = '♡';
+                heart.style.left = window.innerWidth / 2 + 'px';
+                heart.style.top = window.innerHeight / 2 + 'px';
+                
+                const angle = Math.random() * Math.PI * 2;
+                const dist = 50 + Math.random() * 100;
+                const dX = Math.cos(angle) * dist, dY = Math.sin(angle) * dist;
+                
+                document.body.appendChild(heart);
+                heart.animate([
+                    { transform: 'translate(0, 0) scale(0.5)', opacity: 1 },
+                    { transform: `translate(${dX}px, ${dY}px) scale(1.5)`, opacity: 0 }
+                ], { duration: 1000, easing: 'ease-out' }).onfinish = () => heart.remove();
+            }
+        }
+    </script>
+</body>
+</html>
